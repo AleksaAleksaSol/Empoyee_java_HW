@@ -16,7 +16,7 @@ public class Tasks {
    * Написать метод, который принимает текст (строку) и печатает информацию в следующем виде:
    * длина слова -> [слова, у которых заданная длина]
    * Вывод должен быть отсортирован по возрастанию длины слова
-   *
+   * <p>
    * Java C# Kotlin Golang Java Pascal Pascal
    * 2 -> [C#]
    * 4 -> [Java]
@@ -25,19 +25,17 @@ public class Tasks {
   static void printLengths(String text) {
     String[] words = text.replaceAll("[^A-Za-z]", " ").split("\\s+");
 
-    Map<Integer, List<String>> stats = new HashMap<>();
+    Map<Integer, Set<String>> stats = new HashMap<>();
     for (String word : words) {
       int length = word.length();
       if (!stats.containsKey(length)) {
-        List<String> newList = new ArrayList<>();
+        Set<String> newList = new TreeSet<>();
         newList.add(word);
         stats.put(length, newList);
       } else {
-        List<String> existsWords = stats.get(length);
-        if (!existsWords.contains(word)) {
-          existsWords.add(word);
-          stats.put(length, existsWords);
-        }
+        Set<String> existsWords = stats.get(length);
+        existsWords.add(word);
+        stats.put(length, existsWords);
       }
     }
 

@@ -3,6 +3,7 @@ package ru.gb.lesson3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 
 public class ListTasks {
 
@@ -57,7 +58,7 @@ public class ListTasks {
   // "javascript" -> 1
   // "kotlin" -> 1
   static void printCount(ArrayList<String> strings) {
-    ArrayList<String> visited = new ArrayList<>();
+    HashSet<String> visited = new HashSet<>();
     for (int i = 0; i < strings.size(); i++) {
       String element = strings.get(i);
       if (!visited.contains(element)) {
